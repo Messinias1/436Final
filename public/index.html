@@ -6,7 +6,9 @@
       #guardianList,
       #childList,
       #driverList,
-      #petList {
+      #petList,
+      #assistList,
+      #foodRestrictionList {
         /* Add your styles here */
         margin-top: 20px;
         border: 1px solid #ccc;
@@ -77,6 +79,11 @@
     <button id="aToggleButton">Show/Hide Assistants</button>
     <div id="assistList" style="display: none">
       <!-- Child list will be populated here -->
+    </div>
+
+    <button id="frToggleButton">Show/Hide Food Restrictions</button>
+    <div id="foodRestrictionList" style="display: none">
+      <!-- Data from AllWithFoodRestrictions view will be populated here -->
     </div>
 
     <script src="public/app.js"></script>

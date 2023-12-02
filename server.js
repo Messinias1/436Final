@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
+// CONNECTIONS --------------------------------------- // http://localhost:3000
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
@@ -16,7 +17,6 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to the MySQL server.");
-  // http://localhost:3000
 });
 
 const port = 3000;
@@ -88,6 +88,19 @@ app.get("/getAssist", (req, res) => {
     if (err) {
       console.error("Error fetching assist:", err);
       res.status(500).send("Error fetching assist");
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.get("/getAllWithFoodRestrictions", (req, res) => {
+  const query = "SELECT * FROM AllWithFoodRestrictions";
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Error fetching data:", err);
+      res.status(500).send("Error fetching data");
     } else {
       res.json(results);
     }

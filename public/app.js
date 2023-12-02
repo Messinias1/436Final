@@ -570,3 +570,42 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error deleting assist:", error));
   }
 });
+
+// ALL ALLERGIES VIEW ----------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("frToggleButton");
+  const foodRestrictionList = document.getElementById("foodRestrictionList");
+
+  toggleButton.addEventListener("click", function () {
+    if (
+      foodRestrictionList.style.display === "none" ||
+      foodRestrictionList.style.display === ""
+    ) {
+      foodRestrictionList.style.display = "block";
+      loadFoodRestrictions();
+    } else {
+      foodRestrictionList.style.display = "none";
+    }
+  });
+
+  function loadFoodRestrictions() {
+    fetch("/getAllWithFoodRestrictions")
+      .then((response) => response.json())
+      .then((data) => {
+        foodRestrictionList.innerHTML = ""; // Clear existing content
+
+        data.forEach((item) => {
+          const div = document.createElement("div");
+          div.id = `restriction_${item.id}`;
+
+          // Format the display text for each item
+          div.textContent = `${item.SourceTable}: ${item.name} - Role: ${item.groupRole} - Restriction: ${item.foodRestriction}`;
+
+          foodRestrictionList.appendChild(div);
+        });
+      })
+      .catch((error) =>
+        console.error("Error loading food restrictions:", error)
+      );
+  }
+});
