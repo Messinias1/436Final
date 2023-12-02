@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Guardian</title>
+    <style>
+      #guardianList,
+      #childList,
+      #driverList,
+      #petList {
+        /* Add your styles here */
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="guardianForm">
+      <input type="text" id="name" placeholder="Name" />
+      <input type="number" id="groupRoleID" placeholder="Group Role ID" />
+      <input type="text" id="groupRole" placeholder="Group Role" />
+      <input type="text" id="foodRestriction" placeholder="Food Restriction" />
+      <button type="submit">Add Guardian</button>
+    </form>
+
+    <button id="toggleButton">Show/Hide Guardians</button>
+    <div id="guardianList" style="display: none">
+      <!-- Guardian list will be populated here -->
+    </div>
+
+    <form id="childForm">
+      <input type="text" id="cName" placeholder="Name" />
+      <input type="number" id="cGroupRoleID" placeholder="Group Role ID" />
+      <input type="text" id="cGroupRole" placeholder="Group Role" />
+      <input type="text" id="cFoodRestriction" placeholder="Food Restriction" />
+      <button type="submit">Add Child</button>
+    </form>
+
+    <button id="cToggleButton">Show/Hide Children</button>
+    <div id="childList" style="display: none">
+      <!-- Child list will be populated here -->
+    </div>
+
+    <form id="driverForm">
+      <input type="text" id="dName" placeholder="Name" />
+      <input type="number" id="dGroupRoleID" placeholder="Group Role ID" />
+      <input type="text" id="dGroupRole" placeholder="Group Role" />
+      <input type="text" id="dFoodRestriction" placeholder="Food Restriction" />
+      <button type="submit">Add Driver</button>
+    </form>
+
+    <button id="dToggleButton">Show/Hide Drivers</button>
+    <div id="driverList" style="display: none">
+      <!-- Child list will be populated here -->
+    </div>
+
+    <form id="petForm">
+      <input type="text" id="pName" placeholder="Name" />
+      <input type="text" id="pGroupRole" placeholder="Group Role" />
+      <input type="text" id="pFoodRestriction" placeholder="Food Restriction" />
+      <button type="submit">Add Pet</button>
+    </form>
+
+    <button id="pToggleButton">Show/Hide Pets</button>
+    <div id="petList" style="display: none">
+      <!-- Child list will be populated here -->
+    </div>
+
+    <script src="public/app.js"></script>
+  </body>
+</html>
