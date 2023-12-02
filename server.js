@@ -81,6 +81,19 @@ app.get("/getPet", (req, res) => {
   });
 });
 
+app.get("/getAssist", (req, res) => {
+  const query = "SELECT * FROM Assist";
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error("Error fetching assist:", err);
+      res.status(500).send("Error fetching assist");
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 // POST REQUESTS -------------------------------------------------------------
 app.post("/addGuardian", (req, res) => {
   const { name, groupRoleID, groupRole, foodRestriction } = req.body;
@@ -138,6 +151,24 @@ app.post("/addPet", (req, res) => {
     (err, results) => {
       if (err) throw err;
       res.send(`Pet added with ID: ${results.insertId}`);
+    }
+  );
+});
+
+app.post("/addAssist", (req, res) => {
+  const { petID, name, groupRole, foodRestriction } = req.body;
+  const query = `INSERT INTO Assist (petID, name, groupRole, foodRestriction) VALUES (?, ?, ?, ?)`;
+
+  connection.query(
+    query,
+    [petID, name, groupRole, foodRestriction],
+    (err, results) => {
+      if (err) {
+        console.error("Error adding to Assist:", err);
+        res.status(500).send("Error adding to Assist");
+      } else {
+        res.send(`Assist entry added with ID: ${results.insertId}`);
+      }
     }
   );
 });
@@ -207,6 +238,22 @@ app.put("/updatePet/:id", (req, res) => {
   });
 });
 
+app.put("/updateAssist/:id", (req, res) => {
+  const { id } = req.params;
+  const { groupRole, foodRestriction } = req.body;
+  const query =
+    "UPDATE Assist SET groupRole = ?, foodRestriction = ? WHERE id = ?";
+
+  connection.query(query, [groupRole, foodRestriction, id], (err, results) => {
+    if (err) {
+      console.error("Error updating assist:", err);
+      res.status(500).send("Error updating assist");
+    } else {
+      res.send(`Assist with ID: ${id} updated successfully`);
+    }
+  });
+});
+
 // DELETE REQUESTS
 app.delete("/deleteGuardian/:id", (req, res) => {
   const { id } = req.params;
@@ -260,6 +307,20 @@ app.delete("/deletePet/:id", (req, res) => {
       res.status(500).send("Error deleting pet");
     } else {
       res.send(`Pet with ID: ${id} deleted successfully`);
+    }
+  });
+});
+
+app.delete("/deleteAssist/:id", (req, res) => {
+  const { id } = req.params;
+  const query = "DELETE FROM Assist WHERE id = ?";
+
+  connection.query(query, [id], (err, results) => {
+    if (err) {
+      console.error("Error deleting assist:", err);
+      res.status(500).send("Error deleting assist");
+    } else {
+      res.send(`Assist with ID: ${id} deleted successfully`);
     }
   });
 });

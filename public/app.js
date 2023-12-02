@@ -456,3 +456,117 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error deleting pet:", error));
   }
 });
+
+// ASSIST ------------------------------------------------------------------------------
+document.getElementById("assistForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const petID = document.getElementById("petID").value;
+  const name = document.getElementById("aName").value;
+  const groupRole = document.getElementById("aGroupRole").value;
+  const foodRestriction = document.getElementById("aFoodRestriction").value;
+
+  fetch("/addAssist", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ petID, name, groupRole, foodRestriction }),
+  })
+    .then((response) => response.text())
+    .then((data) => alert(data));
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("aToggleButton");
+  const assistList = document.getElementById("assistList");
+
+  toggleButton.addEventListener("click", function () {
+    if (assistList.style.display === "none") {
+      assistList.style.display = "block";
+      // Optional: Load the guardian list if not already loaded
+      loadAssists();
+    } else {
+      assistList.style.display = "none";
+    }
+  });
+
+  function loadAssists() {
+    fetch("/getAssist")
+      .then((response) => response.json())
+      .then((data) => {
+        assistList.innerHTML = ""; // Clear existing content
+        data.forEach((assist) => {
+          const div = document.createElement("div");
+          div.id = `assist_${assist.id}`;
+
+          // assistinfo
+          div.textContent = `Pet ID: ${assist.petID} Name: ${assist.name}, Role: ${assist.groupRole}, Restriction: ${assist.foodRestriction}`;
+
+          // Edit button
+          const editButton = document.createElement("button");
+          editButton.textContent = "Edit";
+          editButton.onclick = () => editAssist(assist);
+
+          // Delete button
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.onclick = () => deleteAssist(assist.id);
+
+          div.appendChild(editButton);
+          div.appendChild(deleteButton);
+          assistList.appendChild(div);
+        });
+      })
+      .catch((error) => console.error("Error loading assist:", error));
+  }
+
+  function editAssist(pet) {
+    // Create form elements for editing
+    const editForm = document.createElement("form");
+    editForm.innerHTML = `
+      <input type="text" id="editGroupRole_${assist.id}" placeholder="Group Role" value="${assist.groupRole}">
+      <input type="text" id="editFoodRestriction_${assist.id}" placeholder="Food Restriction" value="${assist.foodRestriction}">
+      <button type="submit">Save</button>
+    `;
+    editForm.onsubmit = (e) => {
+      e.preventDefault();
+      updateAssist(assist.id);
+    };
+
+    const assistDiv = document.querySelector(`#assist_${assist.id}`);
+    assistDiv.innerHTML = "";
+    assistDiv.appendChild(editForm);
+  }
+
+  function updateAssist(id) {
+    const groupRole = document.getElementById(`editGroupRole_${id}`).value;
+    const foodRestriction = document.getElementById(
+      `editFoodRestriction_${id}`
+    ).value;
+
+    fetch(`/updateAssist/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ groupRole, foodRestriction }),
+    })
+      .then((response) => response.text())
+      .then((message) => {
+        console.log(message);
+        loadAssists(); // Reload the list
+      })
+      .catch((error) => console.error("Error updating assist:", error));
+  }
+
+  function deleteAssist(id) {
+    fetch(`/deleteAssist/${id}`, { method: "DELETE" })
+      .then((response) => response.text())
+      .then((message) => {
+        console.log(message);
+        loadAssists(); // Reload the list
+      })
+      .catch((error) => console.error("Error deleting assist:", error));
+  }
+});
