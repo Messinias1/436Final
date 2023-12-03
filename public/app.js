@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Delete button
           const deleteButton = document.createElement("button");
           deleteButton.textContent = "Delete";
+          deleteButton.className = "delete-button";
           deleteButton.onclick = () => deleteGuardian(guardian.id);
 
           div.appendChild(editButton);
@@ -170,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Delete button
           const deleteButton = document.createElement("button");
           deleteButton.textContent = "Delete";
+          deleteButton.className = "delete-button";
           deleteButton.onclick = () => deleteChild(child.id);
 
           div.appendChild(editButton);
@@ -284,6 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Delete button
           const deleteButton = document.createElement("button");
           deleteButton.textContent = "Delete";
+          deleteButton.className = "delete-button";
           deleteButton.onclick = () => deleteDriver(driver.id);
 
           div.appendChild(editButton);
@@ -397,6 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Delete button
           const deleteButton = document.createElement("button");
           deleteButton.textContent = "Delete";
+          deleteButton.className = "delete-button";
           deleteButton.onclick = () => deletePet(pet.id);
 
           div.appendChild(editButton);
@@ -511,6 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Delete button
           const deleteButton = document.createElement("button");
           deleteButton.textContent = "Delete";
+          deleteButton.className = "delete-button";
           deleteButton.onclick = () => deleteAssist(assist.id);
 
           div.appendChild(editButton);

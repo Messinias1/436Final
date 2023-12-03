@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="public/style.css" />
+
     <title>Add Guardian</title>
-    <style>
-      #guardianList,
-      #childList,
-      #driverList,
-      #petList,
-      #assistList,
-      #foodRestrictionList {
-        /* Add your styles here */
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        padding: 10px;
-      }
-    </style>
   </head>
   <body>
+    <h1>Family Food Allergy Tracker</h1>
+
+    <h3>Guardian</h3>
     <form id="guardianForm">
       <input type="text" id="name" placeholder="Name" />
       <input type="number" id="groupRoleID" placeholder="Group Role ID" />
@@ -30,6 +22,7 @@
       <!-- Guardian list will be populated here -->
     </div>
 
+    <h3>Child</h3>
     <form id="childForm">
       <input type="text" id="cName" placeholder="Name" />
       <input type="number" id="cGroupRoleID" placeholder="Group Role ID" />
@@ -43,6 +36,7 @@
       <!-- Child list will be populated here -->
     </div>
 
+    <h3>Driver</h3>
     <form id="driverForm">
       <input type="text" id="dName" placeholder="Name" />
       <input type="number" id="dGroupRoleID" placeholder="Group Role ID" />
@@ -56,6 +50,7 @@
       <!-- Child list will be populated here -->
     </div>
 
+    <h3>Pet</h3>
     <form id="petForm">
       <input type="text" id="pName" placeholder="Name" />
       <input type="text" id="pGroupRole" placeholder="Group Role" />
@@ -68,6 +63,7 @@
       <!-- Child list will be populated here -->
     </div>
 
+    <h3>Assistant</h3>
     <form id="assistForm">
       <input type="number" id="petID" placeholder="Pet ID" />
       <input type="text" id="aName" placeholder="Name" />
@@ -81,7 +77,10 @@
       <!-- Child list will be populated here -->
     </div>
 
-    <button id="frToggleButton">Show/Hide Food Restrictions</button>
+    <h2>People With Common Allergies</h2>
+    <div class="center-container">
+      <button id="frToggleButton">Show/Hide Food Restrictions</button>
+    </div>
     <div id="foodRestrictionList" style="display: none">
       <!-- Data from AllWithFoodRestrictions view will be populated here -->
     </div>

@@ -1,0 +1,160 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #cdc9c9;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #333333;
+}
+
+/* Add this to your existing CSS file if you're using Google Fonts */
+
+/* Centering the h1 and applying Google Font */
+h1 {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700; /* This makes it bold */
+  font-size: 45px;
+  color: #333333;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700; /* This makes it bold */
+  font-size: 28px;
+  color: #333333;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  background: #5cb85c;
+  color: #fff;
+  cursor: pointer;
+  margin: 4px;
+}
+
+button:hover {
+  background: #4cae4c;
+}
+
+/* List Styles */
+#guardianList,
+#childList,
+#driverList,
+#petList,
+#assistList,
+#foodRestrictionList {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+  padding: 20px;
+}
+
+/* Toggle Button Styles */
+#toggleButton,
+#cToggleButton,
+#dToggleButton,
+#pToggleButton,
+#aToggleButton,
+#frToggleButton {
+  background: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#toggleButton:hover,
+#cToggleButton:hover,
+#dToggleButton:hover,
+#pToggleButton:hover,
+#aToggleButton:hover,
+#frToggleButton:hover {
+  background: #286090;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* Responsive Design */
+@media (min-width: 600px) {
+  input[type="text"],
+  input[type="number"],
+  button {
+    width: auto;
+    display: inline-block;
+  }
+}
+
+.delete-button {
+  background-color: #ff4d4d; /* Red color */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding for button size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor indicates button */
+  font-size: 1em; /* Text size */
+  margin: 4px;
+}
+
+.delete-button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.center-container {
+  text-align: center;
+}
