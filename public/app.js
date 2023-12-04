@@ -526,7 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error loading assist:", error));
   }
 
-  function editAssist(pet) {
+  function editAssist(assist) {
     // Create form elements for editing
     const editForm = document.createElement("form");
     editForm.innerHTML = `

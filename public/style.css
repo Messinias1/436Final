@@ -16,8 +16,6 @@ h6 {
   color: #333333;
 }
 
-/* Add this to your existing CSS file if you're using Google Fonts */
-
 /* Centering the h1 and applying Google Font */
 h1 {
   text-align: center;
@@ -141,18 +139,18 @@ th {
 }
 
 .delete-button {
-  background-color: #ff4d4d; /* Red color */
-  color: white; /* White text */
-  border: none; /* No border */
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
   padding: 10px 15px; /* Padding for button size */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Cursor indicates button */
-  font-size: 1em; /* Text size */
+  font-size: 1em;
   margin: 4px;
 }
 
 .delete-button:hover {
-  background-color: #cc0000; /* Darker red on hover */
+  background-color: #cc0000;
 }
 
 .center-container {
