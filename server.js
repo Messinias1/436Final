@@ -10,8 +10,8 @@ app.use(express.static(__dirname));
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "3281",
-  database: "food_tracker",
+  password: "Jasper359",
+  database: "food_tracker3",
 });
 
 connection.connect((err) => {
